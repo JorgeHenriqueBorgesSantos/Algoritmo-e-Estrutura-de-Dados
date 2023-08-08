@@ -169,7 +169,6 @@ void achar_caminho(int array[][10], int n, Pilha* p ){
                         p = adicionar_pilha(i, j, p);
                         printf("Pra cima!\n");
                     }
-                    printf("Pra cima naum dah tambemm\n");
                 }
 
                 }
