@@ -1,3 +1,15 @@
+/*
+
+Nome: Jorge Henrique Borges Santos
+Mat:  2215310039
+
+Nome: Nezi 
+Mat: 
+
+Este programa implementa uma Lista de Afazeres para uma semana com o uso de Filas.
+
+*/
+
 #include "ToDoList.h"
 #include <stdlib.h>
 #include <stdio.h>
