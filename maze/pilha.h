@@ -242,6 +242,10 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
 
                 }
             }
+            if(p->i ==p->prox->prox->i && p->j==p->prox->prox->j){
+            printf("loop-------------");
+                array[p->i][p->j]=4;
+            }
             print_array(array, n);
             printf("linha %d  coluna %d\n", p->i, p->j);
 
