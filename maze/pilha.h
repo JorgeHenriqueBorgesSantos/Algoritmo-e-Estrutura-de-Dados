@@ -150,8 +150,6 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
         //se direita
         tentativas++;
          if((array[i][j+1]==0 || (i==n-2 && j+1==n-1) || array[i][j+1]==2)){
-            if(p->prox!=NULL && (p->i==i && p->j ==j+1))
-                array[i][j+1]=4;
             if(array[i][j+1]==2 && tentativas>=4){
                     printf("repetindo\n");
                     array[i][j]=4;
@@ -167,9 +165,6 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                     array[i][j]=2;
                     p = adicionar_pilha(i, j, p);
                     printf("Pra direita!\n");
-                    printf("atual %d %d \n", p->i, p->j);
-                if (p->prox!=NULL)
-                printf("anterior %d %d \n", p->prox->i, p->prox->j);
                 }
             }
         }
