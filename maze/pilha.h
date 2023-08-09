@@ -152,7 +152,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
         //se direita
         tentativas++;
          if((array[i][j+1]==0 || (i==n-2 && j+1==n-1) || array[i][j+1]==2)){
-            if(array[i][j+1]==2 && tentativas>=4){
+            if(array[i][j-1] != 0 && array[i+1][j]!=0 && array[i-1][j]!=0){
                     printf("repetindo\n");
                     array[i][j]=4;
                     p=remover_pilha(p);
@@ -176,7 +176,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
             tentativas++;
             if(array[i+1][j]==0 || (i==n-2 && j+1==n-1) || (array[i+1][j]==2))
             {   
-                if(array[i+1][j]==2  && tentativas>=4){
+                if(array[i-1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
                         printf("repetindo\n");
                         array[i][j]=4;
                         p=remover_pilha(p);
@@ -200,7 +200,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                 tentativas++;
                 if(array[i][j-1]==0 || array[i][j-1]==2 || (array[i][j-1]==2))
                 {   
-                    if(array[i][j-1]==2  && tentativas>=4){
+                    if(array[i][j+1]!=0 && array[i+1][j]!=0 && array[i-1][j]!=0){
                             printf("repetindo\n");
                             array[i][j]=4;
                             p=remover_pilha(p);
@@ -224,15 +224,14 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                     tentativas++;
                     //cima
                     if(array[i-1][j]==0 || array[i-1][j]==2){
-                        if(array[i-1][j]==2  && tentativas>=4){
+                        if(array[i+1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
                                 printf("repetindo\n");
                                 array[i][j]=4;
                                 p=remover_pilha(p);
                                 i=p->i;
                                 j=p->j;
                             }
-                        else{
-                            
+                        else{     
                             if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<4))
                             {
                                 tentativas=0;
