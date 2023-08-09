@@ -151,7 +151,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
         
         //se direita
         tentativas++;
-         if((array[i][j+1]==0 || (i==n-2 && j+1==n-1) || array[i][j+1]==2)){      
+         if(array[i][j+1]==0 || (i==n-2 && j+1==n-1)){      
             tentativas=0;
             j++;
             array[i][j]=2;
@@ -161,7 +161,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
         //baixo
         else{
             tentativas++;
-            if(array[i+1][j]==0 || (i==n-2 && j+1==n-1) || (array[i+1][j]==2))
+            if(array[i+1][j]==0 || (i==n-2 && j+1==n-1) )
             {     
                         tentativas=0;
                         i++;
@@ -175,7 +175,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
             else{
                 //esquerda
                 tentativas++;
-                if(array[i][j-1]==0 || array[i][j-1]==2 || (array[i][j-1]==2))
+                if(array[i][j-1]==0 )
                 {            
                       
                             tentativas=0;
@@ -190,7 +190,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                 {   
                     tentativas++;                       
                             //cima    
-                            if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<4))
+                            if(array[i-1][j]==0 )
                             {
                                 tentativas=0;
                                 i--;
