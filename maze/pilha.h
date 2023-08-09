@@ -1,3 +1,4 @@
+#include <time.h>
 typedef struct pilha Pilha;
 
 struct pilha
@@ -93,6 +94,7 @@ void ler_arquivo(int array_inteiro[][10], int n)
 void print_array(int array[][10], int n)
 {
     int i, j, lin=n, col=lin;
+    
     printf("Print do array\n");
      for(i=0;i<lin;i++)
     {
@@ -245,7 +247,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                                 array[i-1][j]=4;
                                 p=remover_pilha(p);
                             }
-                            if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<3))
+                            if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<4))
                             {
                                 tentativas=0;
                                 i--;
@@ -261,7 +263,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                 }
             }
 
-            
+            sleep(3000);
             print_array(array, n);
             printf("linha %d  coluna %d\n", p->i, p->j);
 
