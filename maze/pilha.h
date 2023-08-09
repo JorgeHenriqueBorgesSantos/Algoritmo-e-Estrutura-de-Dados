@@ -151,41 +151,18 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
         
         //se direita
         tentativas++;
-         if((array[i][j+1]==0 || (i==n-2 && j+1==n-1) || array[i][j+1]==2)){
-            if(array[i][j-1] != 0 && array[i+1][j]!=0 && array[i-1][j]!=0){
-                    printf("repetindo\n");
-                    array[i][j]=4;
-                    p=remover_pilha(p);
-                    i=p->i;
-                    j=p->j;
-                }
-            
-            else{
-
-                if(array[i][j+1]==0 || (i==n-2 && j+1==n-1) || (array[i][j+1]==2 && tentativas<2)){
-                    tentativas=0;
-                    j++;
-                    array[i][j]=2;
-                    p = adicionar_pilha(i, j, p);
-                    printf("Pra direita!\n");
-                }
-            }
+         if((array[i][j+1]==0 || (i==n-2 && j+1==n-1) || array[i][j+1]==2)){      
+            tentativas=0;
+            j++;
+            array[i][j]=2;
+            p = adicionar_pilha(i, j, p);
+            printf("Pra direita!\n");         
         }
         //baixo
         else{
             tentativas++;
             if(array[i+1][j]==0 || (i==n-2 && j+1==n-1) || (array[i+1][j]==2))
-            {   
-                if(array[i-1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
-                        printf("repetindo\n");
-                        array[i][j]=4;
-                        p=remover_pilha(p);
-                        i=p->i;
-                        j=p->j;
-                    }
-                else{
-                    
-                    if(array[i+1][j]==0 || (i==n-2 && j+1==n-1) || (array[i+1][j]==2  && tentativas<4)){
+            {     
                         tentativas=0;
                         i++;
                         array[i][j]=2;
@@ -193,45 +170,26 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                         printf("Pra baixo\n");
                     }
 
-                } 
+                 
             }
             else{
                 //esquerda
                 tentativas++;
                 if(array[i][j-1]==0 || array[i][j-1]==2 || (array[i][j-1]==2))
-                {   
-                    if(array[i][j+1]!=0 && array[i+1][j]!=0 && array[i-1][j]!=0){
-                            printf("repetindo\n");
-                            array[i][j]=4;
-                            p=remover_pilha(p);
-                            i=p->i;
-                            j=p->j;
-                        }
-                    else{
-                       
-                        if(array[i][j-1]==0 || (array[i][j-1]==2  && tentativas<4))
-                        {
+                {            
+                      
                             tentativas=0;
                             j--;
                             array[i][j]=2;
                             p = adicionar_pilha(i, j, p);
                             printf("Pra esquerda!\n");
-                        }
-                    }
+                }
+                   
                 }
                 else
                 {   
-                    tentativas++;
-                    //cima
-                    if(array[i-1][j]==0 || array[i-1][j]==2){
-                        if(array[i+1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
-                                printf("repetindo\n");
-                                array[i][j]=4;
-                                p=remover_pilha(p);
-                                i=p->i;
-                                j=p->j;
-                            }
-                        else{     
+                    tentativas++;                       
+                            //cima    
                             if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<4))
                             {
                                 tentativas=0;
@@ -240,13 +198,38 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                                 p = adicionar_pilha(i, j, p);
                                 printf("Pra cima!\n");
                             }
+                            //Tudo bloqueado
+                            else{
+                                if(array[i][j-1] != 0 && array[i+1][j]!=0 && array[i-1][j]!=0){
+                                printf("repetindo\n");
+                                array[i][j]=4;
+                                p=remover_pilha(p);
+                                i=p->i;
+                                j=p->j;
+                                }
+
+                                if(array[i+1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
+                                    printf("repetindo\n");
+                                    array[i][j]=4;
+                                    p=remover_pilha(p);
+                                    i=p->i;
+                                    j=p->j;   
+                                }
+
+                                if(array[i][j+1]!=0 && array[i+1][j]!=0 && array[i-1][j]!=0){
+                                    printf("repetindo\n");
+                                    array[i][j]=4;
+                                    p=remover_pilha(p);
+                                    i=p->i;
+                                    j=p->j;
+                                }
                             
-                        }
+                            }
                     }
                 }
 
                 }
-            }
+            
 
             sleep(2);
             print_array(array, n);
