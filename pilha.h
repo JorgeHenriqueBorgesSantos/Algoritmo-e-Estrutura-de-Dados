@@ -131,58 +131,160 @@ baixo array[i+1][j]
 esquerda array[i][j-1]
 cima array[i-1][j]
 */
+Pilha* apagar_caminho(Pilha * p){
+    Pilha * p_temp;
+    p_temp = (Pilha *)malloc(sizeof(Pilha));
+    p_temp=p;
+    while(p_temp->prox != NULL){
+        p_temp=remover_pilha(p_temp);
+    }
+    printf("O primeiro passo Foi %d  %d\n", p->i, p->j);
+    return p_temp;
+}
 
-void achar_caminho(int array[][10], int n, Pilha* p ){
-    int i=1, j=0, final=0;
+Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
+    int i=1, j=0, final=0, tentativas=0;
 
     while(final==0){
         
         //se direita
-         if(array[i][j+1]==0 || (i==n-2 && j+1==n-1)){
-            j++;
-            array[i][j]=2;
-            p = adicionar_pilha(i, j, p);
-            printf("Pra direita!\n");
+        tentativas++;
+         if(array[i][j+1]==0 || (i==n-2 && j+1==n-1) || array[i][j+1]==2){
+            if(array[i][j+1]==0 || (i==n-2 && j+1==n-1) || (array[i][j+1]==2 && tentativas<4)){
+                tentativas=0;
+                j++;
+                array[i][j]=2;
+                p = adicionar_pilha(i, j, p);
+                printf("Pra direita!\n");
+            }
+            else{
+                if(array[i][j+1]==2 && tentativas>=4){
+                    printf("repetindo\n");
+                    array[i][j+1]=4;
+                    array[i][j]=4;
+                    p=apagar_caminho(p);
+                    i=p->i;
+                    j=p->j;
+                }
+                else{
+                    //se o proximo ponto é igual ao anterior(fica em loop)
+                    if((p->prox->i== i && p->prox->j==j+1)){
+                        array[i][j]=4;
+                        p=apagar_caminho(p);
+                        tentativas=0;
+                        i=p->i;
+                        j=p->j;
+                        printf("prar repeticao\n");
+
+                    }
+                }
+            }
         }
         //baixo
         else{
-            if(array[i+1][j]==0 || (i==n-2 && j+1==n-1)){
-            i++;
-            array[i][j]=2;
-            p = adicionar_pilha(i, j, p);
-            printf("Pra baixo\n");
+            tentativas++;
+            if(array[i+1][j]==0 || (i==n-2 && j+1==n-1) || (array[i+1][j]==2))
+            {
+                if(array[i+1][j]==0 || (i==n-2 && j+1==n-1) || (array[i+1][j]==2  && tentativas<4)){
+                    tentativas=0;
+                    i++;
+                    array[i][j]=2;
+                    p = adicionar_pilha(i, j, p);
+                    printf("Pra baixo\n");
+                }
+                else{
+                    if(array[i+1][j]==2  && tentativas>=4){
+                        printf("repetindo\n");
+                        array[i+1][j]=4;
+                        array[i][j]=4;
+                        p=apagar_caminho(p);
+                        i=p->i;
+                        j=p->j;
+                    }
+                    else{
+                        if(p->prox->i==i+1 && p->prox->j==j)
+                        {
+                            array[i][j]=4;
+                            p=apagar_caminho(p);
+                            tentativas=0;
+                            i=p->i;
+                            j=p->j;
+                            printf("prar repeticao\n");
+                        }
+                    }
+
+                } 
             }
             else{
                 //esquerda
-                if(array[i][j-1]==0)
+                tentativas++;
+                if(array[i][j-1]==0 || array[i][j-1]==2 || (array[i][j-1]==2))
                 {
-                    j--;
-                    array[i][j]=2;
-                    p = adicionar_pilha(i, j, p);
-                    printf("Pra esquerda!\n");
-                }
-                else
-                {   //cima
-                    if(array[i-1][j]==0){
-                        i--;
+                    if(array[i][j-1]==0 || (array[i][j-1]==2  && tentativas<4)){
+                        tentativas=0;
+                        j--;
                         array[i][j]=2;
                         p = adicionar_pilha(i, j, p);
-                        printf("Pra cima!\n");
+                        printf("Pra esquerda!\n");
                     }
+                    else{
+                        if(array[i][j-1]==2  && tentativas>=4){
+                            printf("repetindo\n");
+                            array[i][j-1]=4;
+                            array[i][j]=4;
+                            p=apagar_caminho(p);
+                            i=p->i;
+                            j=p->j;
+                        }else{
+                            if(p->prox->i==i && p->prox->j==j-1)
+                            {
+                                array[i][j]=4;
+                                p=apagar_caminho(p);
+                                tentativas=0;
+                                i=p->i;
+                                j=p->j;
+                                printf("prar repeticao\n");
+                            }
+                        }
+                    }
+                }
+                else
+                {   
+                    tentativas++;
+                    //cima
+                    if(array[i-1][j]==0 || array[i-1][j]==2 || (array[i-1][j]==2 )){
+                        if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<4)){
+                            tentativas=0;
+                            i--;
+                            array[i][j]=2;
+                            p = adicionar_pilha(i, j, p);
+                            printf("Pra cima!\n");
+                        }
+                        else{
+                            if(array[i-1][j]==2  && tentativas>=4){
+                                printf("repetindo\n");
+                                array[i-1][j]=4;
+                                array[i][j]=4;
+                                p=apagar_caminho(p);
+                                i=p->i;
+                                j=p->j;
+                            }
+                        }
+                    }
+                    printf("Pra cima naum dah tambemm\n");
                 }
 
                 }
             }
             print_array(array, n);
-            //printf("linha %d  coluna %d\n", p->i, p->j);
+            printf("linha %d  coluna %d\n", p->i, p->j);
 
             if (p->i==n-2 && p->j==n-1){
             printf("\n\n\nChegou no finalll\n\n\n");
             final=1; 
             }  
         }
-        
+        return p;
     }
     
-
 
