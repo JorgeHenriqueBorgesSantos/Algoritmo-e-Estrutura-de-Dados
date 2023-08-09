@@ -149,7 +149,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
         
         //se direita
         tentativas++;
-         if(array[i][j+1]==0 || (i==n-2 && j+1==n-1) || array[i][j+1]==2){
+         if((array[i][j+1]==0 || (i==n-2 && j+1==n-1) || array[i][j+1]==2)){
             if(array[i][j+1]==0 || (i==n-2 && j+1==n-1) || (array[i][j+1]==2 && tentativas<4)){
                 tentativas=0;
                 j++;
@@ -165,18 +165,6 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                     p=remover_pilha(p);
                     i=p->i;
                     j=p->j;
-                }
-                else{
-                    //se o proximo ponto é igual ao anterior(fica em loop)
-                    if((p->prox->i== i && p->prox->j==j+1)){
-                        array[i][j]=4;
-                        p=remover_pilha(p);
-                        tentativas=0;
-                        i=p->i;
-                        j=p->j;
-                        printf("prar repeticao\n");
-
-                    }
                 }
             }
         }
@@ -201,17 +189,6 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                         i=p->i;
                         j=p->j;
                     }
-                    else{
-                        if(p->prox->i==i+1 && p->prox->j==j)
-                        {
-                            array[i][j]=4;
-                            p=remover_pilha(p);
-                            tentativas=0;
-                            i=p->i;
-                            j=p->j;
-                            printf("prar repeticao\n");
-                        }
-                    }
 
                 } 
             }
@@ -235,16 +212,6 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                             p=remover_pilha(p);
                             i=p->i;
                             j=p->j;
-                        }else{
-                            if(p->prox->i==i && p->prox->j==j-1)
-                            {
-                                array[i][j]=4;
-                                p=remover_pilha(p);
-                                tentativas=0;
-                                i=p->i;
-                                j=p->j;
-                                printf("prar repeticao\n");
-                            }
                         }
                     }
                 }
@@ -252,7 +219,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                 {   
                     tentativas++;
                     //cima
-                    if(array[i-1][j]==0 || array[i-1][j]==2 || (array[i-1][j]==2 )){
+                    if(array[i-1][j]==0 || array[i-1][j]==2){
                         if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<4)){
                             tentativas=0;
                             i--;
@@ -271,7 +238,6 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                             }
                         }
                     }
-                    printf("Pra cima naum dah tambemm\n");
                 }
 
                 }
