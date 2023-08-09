@@ -227,7 +227,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                                 j=p->j;
                             }
                         else{
-                            if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<4))
+                            if(array[i-1][j]==0 || (array[i-1][j]==2  && tentativas<3))
                             {
                                 tentativas=0;
                                 i--;
