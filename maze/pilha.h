@@ -205,32 +205,32 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                                 printf("repetindo\n");
                                 array[i][j]=4;
                                 p=remover_pilha(p);
-                                i=p->i;
-                                j=p->j;
+                                j++;
+                                p=adicionar_pilha(i, j, p); ;
                                 }
                                 //para cima
                                 if(array[i+1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
                                     printf("repetindo\n");
                                     array[i][j]=4;
                                     p=remover_pilha(p);
-                                    i=p->i;
-                                    j=p->j;   
+                                    i--;
+                                    p=adicionar_pilha(i, j, p);  
                                 }
                                 //para esquerda
                                 if(array[i][j+1]!=0 && array[i+1][j]!=0 && array[i-1][j]!=0){
                                     printf("repetindo\n");
                                     array[i][j]=4;
                                     p=remover_pilha(p);
-                                    i=p->i;
-                                    j=p->j;
+                                    j--;
+                                    p=adicionar_pilha(i, j, p);
                                 }
                                 //para baixo
                                 if(array[i-1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
                                     printf("repetindo\n");
                                     array[i][j]=4;
                                     p=remover_pilha(p);
-                                    i=p->i;
-                                    j=p->j;
+                                    i++;
+                                    p=adicionar_pilha(i, j, p);
                                 }
                             
                             }
