@@ -263,7 +263,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                 }
             }
 
-            sleep(3000);
+            sleep(3);
             print_array(array, n);
             printf("linha %d  coluna %d\n", p->i, p->j);
 
