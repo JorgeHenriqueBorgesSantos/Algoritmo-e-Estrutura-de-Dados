@@ -20,6 +20,7 @@ int main(int argc, char *argv[]){
     printf("Caminho achado!\n");
     print_array(mat_copia, n);
     print_array(mat, n);
+    mostrar_caminho_final(pilha, mat);
 
 
 }

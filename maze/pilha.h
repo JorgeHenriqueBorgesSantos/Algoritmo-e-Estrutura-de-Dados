@@ -204,33 +204,37 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                                 if(array[i][j-1] != 0 && array[i+1][j]!=0 && array[i-1][j]!=0){
                                 printf("repetindo\n");
                                 array[i][j]=4;
+                                i=p->i;
+                                j=p->j;
                                 p=remover_pilha(p);
-                                j++;
-                                p=adicionar_pilha(i, j, p); ;
+                                
                                 }
                                 //para cima
                                 if(array[i+1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
                                     printf("repetindo\n");
                                     array[i][j]=4;
+                                    i=p->i;
+                                    j=p->j; 
                                     p=remover_pilha(p);
-                                    i--;
-                                    p=adicionar_pilha(i, j, p);  
+                                      
                                 }
                                 //para esquerda
                                 if(array[i][j+1]!=0 && array[i+1][j]!=0 && array[i-1][j]!=0){
                                     printf("repetindo\n");
                                     array[i][j]=4;
+                                    i=p->i;
+                                    j=p->j;
                                     p=remover_pilha(p);
-                                    j--;
-                                    p=adicionar_pilha(i, j, p);
+                                    
                                 }
                                 //para baixo
                                 if(array[i-1][j]!=0 && array[i][j+1]!=0 && array[i][j-1]!=0){
                                     printf("repetindo\n");
                                     array[i][j]=4;
+                                    i=p->i;
+                                    j=p->j;
                                     p=remover_pilha(p);
-                                    i++;
-                                    p=adicionar_pilha(i, j, p);
+                                    
                                 }
                             
                             }
@@ -251,5 +255,22 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
         }
         return p;
     }
+
+void mostrar_caminho_final(Pilha* p, int mat[][10]){
+        printf(" %d %d" , p->i, p->j);
+        Pilha * p_temp;
+        p_temp = (Pilha *)malloc(sizeof(Pilha));
+        int cont=0;
+        p_temp=p;
+        printf(" %d %d" , p_temp->i, p_temp->j);
+
+        while(p_temp->prox!=NULL){
+            mat[p_temp->i][p_temp->j]=3;
+            cont++;
+            p_temp=p_temp->prox;
+        }
+        printf("Matrix final obteve %d passos", cont);
+        print_array(mat, 10);
+}
     
 
