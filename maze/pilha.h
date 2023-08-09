@@ -168,7 +168,8 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                     p = adicionar_pilha(i, j, p);
                     printf("Pra direita!\n");
                     printf("atual %d %d \n", p->i, p->j);
-            printf("anterior %d %d \n", p->prox->i, p->prox->j);
+                if (p!=NULL)
+                printf("anterior %d %d \n", p->prox->i, p->prox->j);
                 }
             }
         }
