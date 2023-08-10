@@ -248,7 +248,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                 }
             
 
-            sleep(2);
+            sleep(1);
             print_array(array, n);
             printf("linha %d  coluna %d\n", p->i, p->j);
 
@@ -268,7 +268,7 @@ void mostrar_caminho_final(Pilha* p, int mat[][10]){
         p_temp=p;
         printf(" %d %d" , p_temp->i, p_temp->j);
 
-        while(p_temp->prox!=NULL){
+        while(p_temp !=NULL){
             mat[p_temp->i][p_temp->j]=3;
             cont++;
             p_temp=p_temp->prox;
