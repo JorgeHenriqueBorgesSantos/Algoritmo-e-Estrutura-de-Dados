@@ -110,7 +110,7 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
 {
     int i = 1, j = 0, final = 0;
 
-    while (final == 0 || p!=NULL)
+    while (final == 0)
     {
 
         // se direita
@@ -191,6 +191,7 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
                                     }
                                     else{
                                         printf("\nSem saída!\n");
+                                        return p;
                                     }
                                 }
                             }
