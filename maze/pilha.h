@@ -189,6 +189,9 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
                                         i = p->i;
                                         j = p->j;
                                     }
+                                    else{
+                                        printf("\nSem saída!\n");
+                                    }
                                 }
                             }
                         }
@@ -205,8 +208,7 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
             printf("\n\n\n\n\n\n\nChegou no finalll\n\n\n\n\n\n");
             final = 1;
         }
-        if(p==NULL)
-        printf("\nSem saída!\n");
+        
     }
     return p;
 }
