@@ -209,6 +209,7 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                                 j=p->j; 
                                 
                                 }
+                                else{
                                 //para baixo
                                 if(array[i+1][j]==2 ){
                                     printf("repetindo\n");
@@ -217,26 +218,29 @@ Pilha * achar_caminho(int array[][10], int n, Pilha* p ){
                                     i=p->i;
                                     j=p->j; 
                                       
-                                }
+                                }else{
                                 //para esquerda
-                                if(array[i][j-1]==2){
-                                    printf("repetindo\n");
-                                    array[i][j]=4;
-                                    p=remover_pilha(p);
-                                    i=p->i;
-                                    j=p->j;
-                                    
+                                    if(array[i][j-1]==2){
+                                        printf("repetindo\n");
+                                        array[i][j]=4;
+                                        p=remover_pilha(p);
+                                        i=p->i;
+                                        j=p->j;
+                                        
+                                    }
+                                    else{
+                                    //para cima
+                                        if(array[i-1][j]==2){
+                                            printf("repetindo\n");
+                                            array[i][j]=4;
+                                            p=remover_pilha(p);
+                                            i=p->i;
+                                            j=p->j;
+                                            
+                                        }
+                                    }
                                 }
-                                //para cima
-                                if(array[i-1][j]==2){
-                                    printf("repetindo\n");
-                                    array[i][j]=4;
-                                    p=remover_pilha(p);
-                                    i=p->i;
-                                    j=p->j;
-                                    
                                 }
-                            
                             }
                     }
                 }
