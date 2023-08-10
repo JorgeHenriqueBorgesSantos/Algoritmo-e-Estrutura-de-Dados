@@ -16,7 +16,7 @@ int main(int argc, char** argv)
     while(0<=h<7)
     {
         scanf("%d", &h);
-        if(h>7||h<0)
+        if(h>6||h<0)
         {
             break;
         }
