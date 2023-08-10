@@ -105,23 +105,12 @@ baixo array[i+1][j]
 esquerda array[i][j-1]
 cima array[i-1][j]
 */
-Pilha *apagar_caminho(Pilha *p)
-{
-    Pilha *p_temp;
-    p_temp = (Pilha *)malloc(sizeof(Pilha));
-    p_temp = p;
-    while (p_temp->prox != NULL)
-    {
-        p_temp = remover_pilha(p_temp);
-    }
-    return p_temp;
-}
 
 Pilha *achar_caminho(int array[][10], int n, Pilha *p)
 {
     int i = 1, j = 0, final = 0;
 
-    while (final == 0)
+    while (final == 0 || p!=NULL)
     {
 
         // se direita
@@ -216,6 +205,8 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
             printf("\n\n\n\n\n\n\nChegou no finalll\n\n\n\n\n\n");
             final = 1;
         }
+        if(p==NULL)
+        printf("\nSem saída!\n");
     }
     return p;
 }
