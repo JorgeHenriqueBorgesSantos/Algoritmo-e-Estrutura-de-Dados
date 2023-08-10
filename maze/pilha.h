@@ -51,7 +51,7 @@ void ler_arquivo(int array_inteiro[][10], int n)
             if (strcmp(verif, "\n\0") != 0 && strcmp(verif, "\r\0") != 0)
             {
                 // printf("copying...\n");
-                printf("%s\n", verif);
+                //printf("%s\n", verif);
                 strcpy(array[i][j], verif);
                 array_inteiro[i][j] = atoi(array[i][j]);
                 ;
@@ -93,7 +93,7 @@ void print_array(int array[][10], int n)
 {
     int i, j, lin = n, col = lin;
 
-    printf("Print do array\n");
+    printf("\n");
     for (i = 0; i < lin; i++)
     {
         for (j = 0; j < col; j++)
@@ -102,6 +102,7 @@ void print_array(int array[][10], int n)
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 void copiar_matriz(int mat[][10], int mat_copia[][10], int n)
@@ -140,7 +141,6 @@ Pilha *apagar_caminho(Pilha *p)
     {
         p_temp = remover_pilha(p_temp);
     }
-    printf("O primeiro passo Foi %d  %d\n", p->i, p->j);
     return p_temp;
 }
 
@@ -260,7 +260,6 @@ void mostrar_caminho_final(Pilha *p, int mat[][10])
     p_temp = (Pilha *)malloc(sizeof(Pilha));
     int cont = 0;
     p_temp = p;
-    printf(" %d %d", p_temp->i, p_temp->j);
 
     while (p_temp != NULL)
     {
@@ -268,6 +267,6 @@ void mostrar_caminho_final(Pilha *p, int mat[][10])
         cont++;
         p_temp = p_temp->prox;
     }
-    printf("Matrix final obteve %d passos", cont);
+    printf("\nMatrix final obteve %d passos\n", cont);
     print_array(mat, 10);
 }
