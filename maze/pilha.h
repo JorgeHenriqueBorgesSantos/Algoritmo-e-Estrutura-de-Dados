@@ -201,6 +201,7 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
             }
         }
 
+        system("clear");
         sleep(1);
         print_array(array, n);
 
