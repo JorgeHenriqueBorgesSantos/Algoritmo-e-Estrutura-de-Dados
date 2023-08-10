@@ -62,33 +62,6 @@ void ler_arquivo(int array_inteiro[][10], int n)
     }
 }
 
-/*
-void ler_arquivo(int array_inteiro[][10], int n)
-{
-    int i, j, lin=n, col=n;
-    char array_char[lin][col];
-    char *num = malloc(2*sizeof(char));
-
-    printf("Insert numbers: ");
-    for(i=0;i<lin;i++)
-    {
-        for(j=0;j<col;j++)
-        {
-            array_char[i][j] = getchar();
-            if(isspace(array_char[i][j]))
-                j--;
-            else
-            {
-            num[0]=array_char[i][j];
-            num[1]="\0";
-            array_inteiro[i][j]=atoi(num);
-            }
-        }
-    }
-
-}
-*/
-
 void print_array(int array[][10], int n)
 {
     int i, j, lin = n, col = lin;
@@ -157,7 +130,6 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
             j++;
             array[i][j] = 2;
             p = adicionar_pilha(i, j, p);
-            printf("Pra direita!\n");
         }
         // baixo
         else
@@ -167,7 +139,6 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
                 i++;
                 array[i][j] = 2;
                 p = adicionar_pilha(i, j, p);
-                printf("Pra baixo\n");
             }
             else
             {
@@ -177,7 +148,6 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
                     j--;
                     array[i][j] = 2;
                     p = adicionar_pilha(i, j, p);
-                    printf("Pra esquerda!\n");
                 }
 
                 else
@@ -188,7 +158,6 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
                         i--;
                         array[i][j] = 2;
                         p = adicionar_pilha(i, j, p);
-                        printf("Pra cima!\n");
                     }
                     // Tudo bloqueado
                     else
@@ -196,7 +165,6 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
                         // para direita
                         if (array[i][j + 1] == 2)
                         {
-                            printf("repetindo\n");
                             array[i][j] = 4;
                             p = remover_pilha(p);
                             i = p->i;
@@ -242,7 +210,6 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
 
         sleep(1);
         print_array(array, n);
-        printf("linha %d  coluna %d\n", p->i, p->j);
 
         if (p->i == n - 2 && p->j == n - 1)
         {
@@ -255,18 +222,15 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
 
 void mostrar_caminho_final(Pilha *p, int mat[][10])
 {
-    printf(" %d %d", p->i, p->j);
     Pilha *p_temp;
     p_temp = (Pilha *)malloc(sizeof(Pilha));
-    int cont = 0;
     p_temp = p;
 
     while (p_temp != NULL)
     {
         mat[p_temp->i][p_temp->j] = 3;
-        cont++;
         p_temp = p_temp->prox;
     }
-    printf("\nMatrix final obteve %d passos\n", cont);
+    
     print_array(mat, 10);
 }
