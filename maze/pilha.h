@@ -201,8 +201,8 @@ Pilha *achar_caminho(int array[][10], int n, Pilha *p)
             }
         }
 
-        system("clear");
         sleep(1);
+        system("clear");
         print_array(array, n);
 
         if (p->i == n - 2 && p->j == n - 1)
