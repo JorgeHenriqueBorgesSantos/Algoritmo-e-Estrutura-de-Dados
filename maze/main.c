@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
     copiar_matriz(mat, mat_copia, n);
 
     pilha=achar_caminho(mat, n, pilha);
-    printf("\n\nMaze\n\n")
+    printf("\n\nMaze\n\n");
     print_array(mat_copia, n);
     printf("Caminho percorrido");
     print_array(mat, n);
