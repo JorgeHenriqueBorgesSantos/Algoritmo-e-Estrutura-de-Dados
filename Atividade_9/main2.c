@@ -1,10 +1,10 @@
 /*
 
 Nome: Jorge Henrique Borges Santos
-Mat:  2215310039
+Mat: 2215310039
 
-Nome: Nezi 
-Mat: 
+Nome: Nezi Pimentel Ribeiro Neta
+Mat: 2215310058
 
 Este programa implementa uma Lista de Afazeres para uma semana com o uso de Filas.
 
