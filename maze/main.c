@@ -1,3 +1,15 @@
+/*
+
+Nome: Jorge Henrique Borges Santos
+Mat: 2215310039
+
+Nome: Nezi Pimentel Ribeiro Neta
+Mat: 2215310058
+
+Este programa implementa um algoritmo capaz de solucionar um labirinto em formato txt.
+
+*/
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
